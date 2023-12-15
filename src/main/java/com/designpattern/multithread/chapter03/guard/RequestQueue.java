@@ -10,7 +10,6 @@ public class RequestQueue {
         while (queue.peek() == null) {
             try {
                 wait();
-                System.out.println("aa");
             } catch (InterruptedException ignored) {
             }
         }
@@ -19,6 +18,10 @@ public class RequestQueue {
 
     public synchronized void putRequest(Request request) {
         queue.offer(request);
+        notifyAll();
+    }
+
+    public void notifying() {
         notifyAll();
     }
 }
