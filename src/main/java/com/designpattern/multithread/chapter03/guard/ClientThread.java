@@ -17,7 +17,9 @@ public class ClientThread extends Thread {
         for (int i = 0; i < 10000; i++) {
             Request request = new Request("No. " + i);
             System.out.println(Thread.currentThread().getName() + " requests " + request);
+            notifyAll();
             requestQueue.putRequest(request);
+
             try {
                 Thread.sleep(1000L);
             } catch (InterruptedException ignored) {
